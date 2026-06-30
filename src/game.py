@@ -60,7 +60,7 @@ class Game:
             If the cards of both players is equal then None is returned
         """
         if player1_card == player2_card:
-            return None
+            return None, None
         if player1_card.get_card_value() > player2_card.get_card_value():
             return player1, player1_card
         else:
@@ -79,13 +79,8 @@ class Game:
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
 
-            if card1.value > card2.value:
-                self.player1.add_cards([card1, card2])
-                return f"{self.player1.name} wins the round!"
-            elif card2.value > card1.value:
-                self.player2.add_cards([card1, card2])
-                return f"{self.player2.name} wins the round!"
-            else:
+            player_round_winner, winning_card = self.higher_card_winner(self.player1, card1, self.player2, card2)
+            if player_round_winner == None:
                 return self.resolve_war([card1], [card2])
         else:
             return "Game over. One of the players has no cards left."
