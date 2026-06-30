@@ -42,4 +42,30 @@ class Card:
             Integer value of a card object
         """
         return self.VALUE_TABLE[self.value]
+    
+    def __eq__(self, other):
+        """
+        Checks if two cards are equal in value but not of suit
+
+        Parameters
+        ----------
+        other : Card
+            Second card object that is compaired to the object referenced on the right.
+
+        Returns
+        -------
+        bool
+            True if the cards have equal value.
+            False if the cards do not have equal value.
+
+        Raises
+        ------
+        TypeError
+            If the second argument is not of type Card
+        """
+        if not isinstance(other, Card):
+            raise TypeError("Object is not an instance of the Card class!")
+        return self.value == other.value
+    
+
         
