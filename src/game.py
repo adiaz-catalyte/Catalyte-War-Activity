@@ -62,8 +62,8 @@ class Game:
             print("Player 2 Wins The War")
             self.player2_hand.extend([player1_card, player2_card])
         else:
-            print("It's a tie! No one wins this round.")
-
+            print(f"IT\'S A WAR...YOU BOTH DREW A {player1_card[1]} OF {player1_card[0]}") # implement war functionality
+            self.commit_war()
         print()
         if self.player1_hand and self.player2_hand:
             self._pause_for_next_round()
@@ -79,6 +79,14 @@ class Game:
 
     def _pause_for_next_round(self):
         input("Press Enter to continue to the next round...")
+
+    def commit_war(self):
+        player_1_cards_down = []
+        player_2_cards_down = []
+
+        for i in range(0,4):
+            self.player1_hand
+            
 
     def _print_final_results(self):
         print("Game Over!")

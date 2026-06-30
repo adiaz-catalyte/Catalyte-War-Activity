@@ -20,3 +20,10 @@ def test_deal_cards():
     assert len(player1_hand) == 26
     assert len(player2_hand) == 26
     assert set(player1_hand).isdisjoint(set(player2_hand))  # Ensure no overlap
+
+def test_draw_card():
+    deck = Deck()
+    initial_length = len(deck.cards)
+    card = deck.draw_card()
+    assert len(deck.cards) == initial_length - 1
+    assert card not in deck.cards  # Ensure the drawn card is no longer in the deck
