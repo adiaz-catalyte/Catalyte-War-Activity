@@ -29,4 +29,17 @@ class Card:
             raise ValueError("Your suit is not a member of accepted suit values!")
         if self.VALUE_TABLE[value] == None:
             raise ValueError("Your card value is not a member of accepted card values!")
+        self.suit = suit
+        self.value = value
+
+    def get_card_value(self):
+        """
+        Returns the numerical value of a card object.
+
+        Returns
+        -------
+        int
+            Integer value of a card object
+        """
+        return self.VALUE_TABLE[self.value]
         
