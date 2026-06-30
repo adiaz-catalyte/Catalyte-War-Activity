@@ -30,7 +30,7 @@ class Game:
     def higher_card_winner(self, player1: Player, player1_card: Card, player2: Player, player2_card: Card):
         """
         Compairs each players card and returns the player with the greater card
-        and None if the cards are of equal value
+        and None if the cards are of equal value.
 
         Parameters
         ----------
@@ -50,6 +50,16 @@ class Game:
         None
             If the cards of both players is equal then None is returned
         """
+        if player1_card == player2_card:
+            return None
+        if player1_card.get_card_value() > player2_card.get_card_value():
+            return player1
+        else:
+            return player2
+
+
+
+
         if self.player1.has_cards() and self.player2.has_cards():
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
@@ -69,6 +79,8 @@ class Game:
                 return self.resolve_war([card1], [card2])
         else:
             return "Game over. One of the players has no cards left."
+        
+        self.pause_for_next_round()
         
     def resolve_war(self, war_pile1, war_pile2):
         """
