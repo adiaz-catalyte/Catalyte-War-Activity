@@ -45,7 +45,7 @@ class Card:
     
     def __eq__(self, other):
         """
-        Checks if two cards are equal in value but not of suit
+        Checks if two cards are equal in value but not of suit.
 
         Parameters
         ----------
@@ -67,5 +67,13 @@ class Card:
             raise TypeError("Object is not an instance of the Card class!")
         return self.value == other.value
     
+    def __str__(self):
+        """
+        String cast function for a card object.
 
-        
+        Returns
+        -------
+        str
+            String version of card data.
+        """
+        return f"{self.value} of {self.suit}s"
