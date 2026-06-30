@@ -85,4 +85,6 @@ class Card:
         str
             String version of card data.
         """
+
+        # This is the worst line of code I have every written
         return f"{next(k for k, v in self.VALUE_ALAIS.items() if v == self.value) if self.value in self.VALUE_ALAIS.values() else self.value} of {self.suit}s"
