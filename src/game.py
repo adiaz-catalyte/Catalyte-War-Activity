@@ -16,7 +16,7 @@ class Game:
         """
         Initializes the game with two players and a deck of cards.
 
-        Parameters:
+        Args:
             player1_name (str): The name of the first player.
             player2_name (str): The name of the second player.
         """
