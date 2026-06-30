@@ -25,7 +25,7 @@ class Deck:
         Returns:
             list: A list containing 52 Card objects.
         """
-        return [Card(rank, suit) for suit in Card.suits for rank in Card.ranks]
+        return [Card(rank, suit) for suit in Card.SUITS for rank in Card.VALUE_TABLE.keys()]
 
     def shuffle_deck(self):
         """
