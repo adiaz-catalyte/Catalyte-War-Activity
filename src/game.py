@@ -22,10 +22,7 @@
 # 2. If wars continue to happen until one player runs out of cards, the player with the most
 # cards wins.
 
-try:
-    from deck_of_cards import Deck
-except ImportError:  # pragma: no cover - fallback for package-style execution
-    from .deck_of_cards import Deck
+from deck import Deck
 
 
 class Game:
