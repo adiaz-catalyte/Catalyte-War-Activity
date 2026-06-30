@@ -30,7 +30,7 @@ class Game:
     def higher_card_winner(self, player1: Player, player1_card: Card, player2: Player, player2_card: Card):
         """
         Compairs each players card and returns the player with the greater card
-        and None if the cards are of equal value
+        and None if the cards are of equal value.
 
         Parameters
         ----------
