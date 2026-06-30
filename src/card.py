@@ -23,8 +23,10 @@ class Card:
         "A": 14
     }
 
-    def __init__(self, suite: str, value: str):
+    def __init__(self, suit: str, value: str):
         
-        if suite not in self.SUITS:
-            
+        if suit not in self.SUITS:
+            raise ValueError("Your suit is not a member of accepted suit values!")
+        if self.VALUE_TABLE[value] == None:
+            raise ValueError("Your card value is not a member of accepted card values!")
         
