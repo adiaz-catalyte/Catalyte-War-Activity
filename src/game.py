@@ -82,6 +82,8 @@ class Game:
             player_round_winner, winning_card = self.higher_card_winner(self.player1, card1, self.player2, card2)
             if player_round_winner == None:
                 return self.resolve_war([card1], [card2])
+            else:
+                return f"{player_round_winner.name} wins the round!"
         else:
             return "Game over. One of the players has no cards left."
 
