@@ -50,14 +50,6 @@ class Game:
         None
             If the cards of both players is equal then None is returned
         """
-<<<<<<< Updated upstream
-        if player1_card == player2_card:
-            return None
-        if player1_card.get_card_value() > player2_card.get_card_value():
-            return player1
-        else:
-            return player2
-=======
         if self.player1.has_cards() and self.player2.has_cards():
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
@@ -138,4 +130,3 @@ class Game:
 
     def _pause_for_next_round(self):
         input("Press Enter to continue to the next round...")
->>>>>>> Stashed changes
