@@ -23,11 +23,20 @@ class Card:
         "A": 14
     }
 
+    VALUE_ALAIS = {
+        "Ace" : "A",
+        "King" : "K",
+        "Queen" : "Q",
+        "Jack" : "J"
+    }
+
     def __init__(self, suit: str, value: str):
         
         if suit not in self.SUITS:
             raise ValueError("Your suit is not a member of accepted suit values!")
-        if self.VALUE_TABLE[value] == None:
+        if self.VALUE_ALAIS.get(value) != None:
+            value = self.VALUE_ALAIS[value]
+        if value not in self.VALUE_TABLE:
             raise ValueError("Your card value is not a member of accepted card values!")
         self.suit = suit
         self.value = value
@@ -76,4 +85,4 @@ class Card:
         str
             String version of card data.
         """
-        return f"{self.value} of {self.suit}s"
+        return f"{next(k for k, v in self.VALUE_ALAIS.items() if v == self.value) if self.value in self.VALUE_ALAIS.values() else self.value} of {self.suit}s"
