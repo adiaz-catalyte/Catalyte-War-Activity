@@ -1,4 +1,4 @@
-from src.deck_of_cards import Deck
+from src.deck import Deck
 
 def test_Deck():
     deck = Deck()
