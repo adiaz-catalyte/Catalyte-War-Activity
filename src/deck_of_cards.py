@@ -20,6 +20,12 @@ class Deck:
         player1_hand = self.cards[:half_deck]
         player2_hand = self.cards[half_deck:]
         return player1_hand, player2_hand
+    
+    def draw_card(self):
+        if self.cards:
+            return self.cards.pop(0)
+        else:
+            return None
 
     def reset(self):
         self.cards = [(suit, value) for suit in self.suits for value in self.values]
