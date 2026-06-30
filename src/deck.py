@@ -6,7 +6,7 @@
         deal the cards
         know if deck is empty
 """
-from card import Card
+from src.card import Card
 import random
 
 class Deck:
@@ -25,7 +25,7 @@ class Deck:
         Returns:
             list: A list containing 52 Card objects.
         """
-        return [Card(rank, suit) for suit in Card.SUITS for rank in Card.VALUE_TABLE.keys()]
+        return [Card(suit, rank) for suit in Card.SUITS for rank in Card.VALUE_TABLE.keys()]
 
     def shuffle_deck(self):
         """
