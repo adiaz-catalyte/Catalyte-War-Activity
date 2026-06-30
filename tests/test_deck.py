@@ -1,5 +1,5 @@
-from deck import Deck
-from card import Card
+from src.deck import Deck
+from src.card import Card
 
 def test_create_deck():
     deck = Deck()
