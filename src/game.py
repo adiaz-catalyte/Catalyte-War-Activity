@@ -53,17 +53,18 @@ class Game:
 
         Returns
         -------
-        Player
+        Player, Card
             If the cards are not equal then the player with the higher card is returned
+            and the higher Card is also returned
         None
             If the cards of both players is equal then None is returned
         """
         if player1_card == player2_card:
             return None
         if player1_card.get_card_value() > player2_card.get_card_value():
-            return player1
+            return player1, player1_card
         else:
-            return player2
+            return player2, player2_card
 
 
 
