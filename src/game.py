@@ -27,6 +27,14 @@ class Game:
         self.deal_cards()
         self.round_number = 0
 
+    def deal_cards(self):
+        """
+        Deals the cards from the deck to both players.
+        """
+        player1_hand, player2_hand = self.deck.deal_cards()
+        self.player1.add_cards(player1_hand)
+        self.player2.add_cards(player2_hand)
+
     def higher_card_winner(self, player1: Player, player1_card: Card, player2: Player, player2_card: Card):
         """
         Compairs each players card and returns the player with the greater card
