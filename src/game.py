@@ -65,18 +65,19 @@ class Game:
             return player1, player1_card
         else:
             return player2, player2_card
+    
+    def play_round(self):
+        """
+        Plays a single round of the game.
+        Each player draws a card, and the player with the higher card wins the round.
+        In case of a tie, a war is initiated.
 
-
-
-
+        Returns:
+            str: The result of the round.
+        """
         if self.player1.has_cards() and self.player2.has_cards():
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
-        
-            self.round_number += 1
-            print(f"Round {self.round_number} of War")
-            print(f"Player 1: {card1.value} of {card1.suit}")
-            print(f"Player 2: {card2.value} of {card2.suit}")
 
             if card1.value > card2.value:
                 self.player1.add_cards([card1, card2])
@@ -88,9 +89,7 @@ class Game:
                 return self.resolve_war([card1], [card2])
         else:
             return "Game over. One of the players has no cards left."
-        
-        self.pause_for_next_round()
-        
+
     def resolve_war(self, war_pile1, war_pile2):
         """
         Resolves a war situation when both players draw cards of equal value.
