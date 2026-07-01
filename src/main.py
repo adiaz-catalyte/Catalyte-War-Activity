@@ -16,7 +16,6 @@ def main():
 
     while game.player1.has_cards() and game.player2.has_cards():
         result = game.play_round()
-        game.print_game_status()
         print(result)
 
     if not game.player1.has_cards():

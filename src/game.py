@@ -96,6 +96,9 @@ class Game:
         Resolves a war situation when both players draw cards of equal value.
         Each player places three cards face down and one card face up.
         The player with the higher face-up card wins all the cards in the war pile.
+        The war continues if the face-up cards are also of equal value.
+        In case a player does not have enough cards to continue the war, the other player wins all the cards.
+        If all 4 cards have been tied, the players draw another card to continue the war.
 
         Args:
             war_pile1 (list): The pile of cards from player 1 involved in the war.
