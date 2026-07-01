@@ -79,6 +79,7 @@ class Game:
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
 
+            print(f"\n--- Round {self.round_number + 1} ---\n")
             print(f"Player {self.player1.name}: {str(card1)}")
             print(f"Player {self.player2.name}: {str(card2)}")
 

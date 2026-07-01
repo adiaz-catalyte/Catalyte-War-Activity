@@ -6,4 +6,3 @@ def test_game_initialization():
     assert game.player2.name == "Bob"
     assert len(game.player1.pile) == 26  # Each player should have half the deck
     assert len(game.player2.pile) == 26
-
