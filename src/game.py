@@ -87,7 +87,7 @@ class Game:
                 return self.resolve_war([], [], [card1, card2])
             else:
                 player_round_winner.add_cards([card1, card2])
-                return f"{player_round_winner.name} wins the round!"
+                return f"{player_round_winner.name} wins the round!\n"
         else:
             return "Game over. One of the players has no cards left."
 
@@ -123,7 +123,7 @@ class Game:
 
 
         # Each player places three cards face down and one card face up
-        print(f"War! {self.player1.name} and {self.player2.name} draw three cards face down and one card face up.")
+        print(f"\nWar! {self.player1.name} and {self.player2.name} draw three cards face down and one card face up.")
         if round_number == 0 and (len(war_pile1) == 0 and len(war_pile2) == 0):
             for _ in range(4):
                 war_pile1.append(self.player1.draw_card())
@@ -173,5 +173,5 @@ class Game:
         print(f"{self.player1.name} has {len(self.player1.pile)} cards.")
         print(f"{self.player2.name} has {len(self.player2.pile)} cards.")
 
-    def _pause_for_next_round(self):
-        input("Press Enter to continue to the next round...")
+    def pause_for_next_round(self):
+        input("Press Enter to continue to the next round...\n")
