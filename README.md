@@ -78,3 +78,8 @@ This will execute the unit tests in the `tests/` directory.
 
 - The current implementation uses a simple interactive console interface.
 - The player piles are managed as first-in, first-out (FIFO) queues to mirror card play order.
+
+## Contributors
+<a href="https://github.com/adiaz-catalyte/Catalyte-War-Activity/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=adiaz-catalyte/Catalyte-War-Activity" />
+</a>
