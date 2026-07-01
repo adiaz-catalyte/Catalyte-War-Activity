@@ -137,6 +137,7 @@ class Game:
         card1 = war_pile1.pop()  # The last card drawn is the face-up card for player 1
         card2 = war_pile2.pop()
 
+        print("\n--- War Round ---\n")
         print(f"Round {round_number} of The War")
         print(f"Player {self.player1.name}: {str(card1)}")
         print(f"Player {self.player2.name}: {str(card2)}")
@@ -144,7 +145,7 @@ class Game:
         winner, winning_card = self.higher_card_winner(self.player1, card1, self.player2, card2)
 
         print(f"Player {winner.name if winner else 'None'} Wins The War")
-
+        print("\n--- End of War Round ---\n")
         if winner is None:
             print("The War Continues!")
             return self.resolve_war(war_pile1, war_pile2, win_pile + [card1, card2], round_number=round_number+1)  # Recursive call for another tie
