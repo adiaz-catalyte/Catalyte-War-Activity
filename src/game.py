@@ -79,16 +79,19 @@ class Game:
             card1 = self.player1.draw_card()
             card2 = self.player2.draw_card()
 
+            print(f"Player {self.player1.name}: {str(card1)}")
+            print(f"Player {self.player2.name}: {str(card2)}")
+
             player_round_winner, winning_card = self.higher_card_winner(self.player1, card1, self.player2, card2)
             if player_round_winner == None:
-                return self.resolve_war([card1], [card2])
+                return self.resolve_war([], [], [card1, card2])
             else:
                 player_round_winner.add_cards([card1, card2])
                 return f"{player_round_winner.name} wins the round!"
         else:
             return "Game over. One of the players has no cards left."
 
-    def resolve_war(self, war_pile1, war_pile2):
+    def resolve_war(self, war_pile1, war_pile2, win_pile, round_number=0):
         """
         Resolves a war situation when both players draw cards of equal value.
         Each player places three cards face down and one card face up.
@@ -97,32 +100,54 @@ class Game:
         Args:
             war_pile1 (list): The pile of cards from player 1 involved in the war.
             war_pile2 (list): The pile of cards from player 2 involved in the war.
+            win_pile (list): The pile of cards that have been won in the war so far.
+            round_number (int): The current round number of the war.
 
         Returns:
             str: The result of the war.
         """
         if len(self.player1.pile) < 4 or len(self.player2.pile) < 4:
+            player_lost, player_won = (self.player1, self.player2) if len(self.player1.pile) < 4 else (self.player2, self.player1)
+            player_won.add_cards(win_pile + player_lost.pile)
+            player_lost.pile.clear()
             return "Game over. One of the players does not have enough cards for war."
 
+        if (round_number > 0) and ((len(self.player1.pile) == 0) or (len(self.player2.pile) == 0)):
+            player_lost, player_won = (self.player1, self.player2) if len(self.player1.pile) == 0 else (self.player2, self.player1)
+            player_won.add_cards(win_pile + player_lost.pile)
+            player_lost.pile.clear()
+            return "Game over. One of the players does not have enough cards for war."
+
+
         # Each player places three cards face down and one card face up
-        for _ in range(3):
+        print(f"War! {self.player1.name} and {self.player2.name} draw three cards face down and one card face up.")
+        if round_number == 0 and (len(war_pile1) == 0 and len(war_pile2) == 0):
+            for _ in range(4):
+                war_pile1.append(self.player1.draw_card())
+                war_pile2.append(self.player2.draw_card())
+
+        # If all 4 cards have been tied draw another card
+        if round_number > 0 and (len(war_pile1) == 0 and len(war_pile2) == 0):
             war_pile1.append(self.player1.draw_card())
             war_pile2.append(self.player2.draw_card())
 
-        card1 = self.player1.draw_card()
-        card2 = self.player2.draw_card()
-        war_pile1.append(card1)
-        war_pile2.append(card2)
+        card1 = war_pile1.pop()  # The last card drawn is the face-up card for player 1
+        card2 = war_pile2.pop()
 
-        if card1.value > card2.value:
-            self.player1.add_cards(war_pile1 + war_pile2)
-            return f"{self.player1.name} wins the war!"
-        elif card2.value > card1.value:
-            self.player2.add_cards(war_pile1 + war_pile2)
-            return f"{self.player2.name} wins the war!"
-        else:
-            return self.resolve_war(war_pile1, war_pile2)  # Recursive call for another tie
-        
+        print(f"Round {round_number} of The War")
+        print(f"Player {self.player1.name}: {str(card1)}")
+        print(f"Player {self.player2.name}: {str(card2)}")
+
+        winner, winning_card = self.higher_card_winner(self.player1, card1, self.player2, card2)
+
+        print(f"Player {winner.name if winner else 'None'} Wins The War")
+
+        if winner is None:
+            print("The War Continues!")
+            return self.resolve_war(war_pile1, war_pile2, win_pile + [card1, card2], round_number=round_number+1)  # Recursive call for another tie
+        winner.add_cards(war_pile1 + war_pile2 + [card1, card2] + win_pile)
+        return f"{winner.name} wins the war!"
+            
     def determine_winner(self):
         """
         Determines the winner of the game based on the number of cards each player has.
